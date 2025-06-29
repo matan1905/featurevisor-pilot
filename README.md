@@ -27,7 +27,7 @@ This service acts as a companion to FeatureVisor, providing:
 ### 1. Add as Submodule
 
 In your FeatureVisor project root:
-
+ 
 ```bash
 # Add the Pilot service as a submodule
 git submodule add https://github.com/matan1905/featurevisor-pilot.git services/pilot
