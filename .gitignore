@@ -3,6 +3,5 @@
 npm-debug.log*
 .DS_Store
 
-definitions/dist
-definitions/out
-definitions/src
+
+.env

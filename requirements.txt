@@ -1,4 +1,6 @@
-numpy~=1.26.4
-flask~=3.1.1
-apscheduler~=3.11.0
-bayesian_testing
+flask
+redis
+apscheduler
+numpy
+bayesian-testing
+python-dotenv
