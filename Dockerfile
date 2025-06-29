@@ -19,7 +19,7 @@ RUN npm ci || yarn install --frozen-lockfile
 COPY . .
 
 # Build FeatureVisor datafiles
-RUN npx featurevisor build
+RUN npx featurevisor build --schema-version=2
 
 # Python service stage
 FROM python:3.11-slim
@@ -35,10 +35,11 @@ WORKDIR /app
 # Copy built datafiles from builder stage
 COPY --from=builder /app/dist /app/dist
 
-# Copy  service files
-# Assuming Dockerfile is in services/pilot/
+# Copy service files
 COPY ./services/pilot/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+
+# Add gunicorn to requirements.txt or install it here
+RUN pip install --no-cache-dir -r requirements.txt gunicorn
 
 # Copy application code
 COPY ./services/pilot/ .
@@ -54,5 +55,5 @@ EXPOSE 5050
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD python -c "import requests; requests.get('http://localhost:5050/stats')"
 
-# Run the application
-CMD ["python", "-u", "app.py"]
+# Run with gunicorn instead of python app.py
+CMD ["gunicorn", "--bind", "0.0.0.0:5050", "--workers", "4", "--timeout", "120", "app:app"]

@@ -33,7 +33,7 @@ class DatafileService:
     @staticmethod
     def load_datafiles_to_redis():
         """Load all datafiles from disk to Redis."""
-        logger.info("Loading datafiles to Redis...")
+        logger.info("Loading datafiles to Redis from " + Config.DATAFILES_DIR)
         pattern = os.path.join(Config.DATAFILES_DIR, '**', '*.json')
         json_files = glob.glob(pattern, recursive=True)
 
