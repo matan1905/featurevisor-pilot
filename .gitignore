@@ -1,7 +1,26 @@
 /definitions/node_modules
 *.log
 npm-debug.log*
+
+
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
 .DS_Store
+Thumbs.db
 
-
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
 .env
+.venv
