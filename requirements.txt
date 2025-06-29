@@ -1,0 +1,6 @@
+flask
+redis
+apscheduler
+numpy
+bayesian-testing
+python-dotenv
